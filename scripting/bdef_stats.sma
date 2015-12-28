@@ -60,7 +60,7 @@ public plugin_init() {
 	register_forward(FM_GetGameDescription,"GameInformation")
 	
 	register_event("DeathMsg", "EVENT_PlayerDeath", "a")
-//	register_event("OnBackpackPickup", "EVENT_BackPackPickup", "a")
+	register_event("ItemPickup", "EVENT_ItemPickup", "b")
 
 	set_task(1.0,"PluginThinkLoop",0,"",0,"b")
 	set_task(30.0,"PluginAdverts",0,"",0,"b")
@@ -103,14 +103,16 @@ public EVENT_PlayerDeath()
 }
 
 //------------------
-//	EVENT_BackPackPickup()
+//	EVENT_ItemPickup()
 //------------------
 
-public EVENT_BackPackPickup()
+public EVENT_ItemPickup(id)
 {
-	new id = read_data(1);	// Client ID
+	new classname[55];
+	read_data(1, classname, 54);	// Classname
+
 	// If the player has picked up the backpack
-	if (!HasBackpack[id])
+	if (equali(classname, "item_backpack") && !HasBackpack[id])
 		HasBackpack[id] = true
 }
 
@@ -366,7 +368,7 @@ public hook_say(id)
 			ShowMyRank(id)
 	}
 
-	return PLUGIN_HANDLED
+	return PLUGIN_CONTINUE
 }
 
 //------------------
