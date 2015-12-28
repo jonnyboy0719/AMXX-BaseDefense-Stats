@@ -1,0 +1,83 @@
+NOTE:
+	All of these ID's are from the Player Temporary Data.
+
+
+//PLAYER STATS
+PDATA_INT:
+	ID: 27
+	Description: Money/Credits
+
+PDATA_INT:
+	ID:	437
+	Description: Mana
+
+PDATA_INT:
+	ID:	435
+	Description: Max Mana
+
+PDATA_INT:
+	ID: 436
+	Description: Health
+
+PDATA_INT:
+	ID: 434
+	Description: Max Health
+
+PDATA_INT:
+	ID: 28
+	Description: Level
+
+PDATA_INT:
+	ID: 33
+	Description: Task
+
+// PLAYER ABILITIES
+PDATA_INT:
+	ID: 29
+	Description: Legerity
+
+PDATA_INT:
+	ID: 30
+	Description: Precision
+
+PDATA_INT:
+	ID: 31
+	Description: Toughness
+
+PDATA_INT:
+	ID: 32
+	Description: Sorcery
+
+PDATA_INT:
+	ID: 406
+	Description: Points
+
+PDATA_INT:
+	ID: 405
+	Description: Experience -- MAX
+
+PDATA_INT:
+	ID: 404
+	Description: Experience -- MIN
+
+// PLAYER ITEMS
+PDATA_INT:
+	ID: 400
+	Description: Item Healthkit
+
+PDATA_INT:
+	ID: 401
+	Description: Item Manakit
+
+
+
+CHAT COLORS:
+	^0	-	addtive
+	^1	-	default
+	^2	-	red
+	^3	-	green
+	^4	-	blue
+	^5	-	orange
+	^6	-	brown
+	^7	-	lightblue
+	^8	-	gray
