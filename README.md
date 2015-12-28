@@ -5,6 +5,9 @@ This plugin will save all of your stats to a MySQL server, which multiple server
 
 Created by: [Johan Eherndahl](http://jonnyboy0719.co.uk/bdef/)  
 
+Bugs
+-----------
+- The UI will not reload if you have spawned and/or reset your stats. It only reloads when you level up.
 
 Commands
 -----------
