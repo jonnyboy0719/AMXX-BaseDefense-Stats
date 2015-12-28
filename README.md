@@ -10,7 +10,7 @@ Commands
 -----------
 `/help` - Prints all the available commands on the console  
 `/reset` - To reset your skills  
-`/fullreset` - To reset your level, skills and experience back to 0 (can't be undone!) 
+`/fullreset` - To reset your level, skills and experience back to 0 (can't be undone!)  
 `/bdefstats or /version` - To show the correction  
 `/top10` - Shows the top10 players  
 `/rank` - Shows your rank   
