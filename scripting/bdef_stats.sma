@@ -25,7 +25,7 @@
 // Plugin
 #define PLUGIN	"Base Defense STATS"
 #define AUTHOR	"JonnyBoy0719"
-#define VERSION	"1.0"
+#define VERSION	"1.1"
 
 //------------------
 //	Handles & more
@@ -44,7 +44,7 @@ new ShouldFullReset[33],
 	get_sql_lvl[33]
 // Global stuff
 new mysqlx_host, mysqlx_user, mysqlx_db, mysqlx_pass, mysqlx_type
-new setranking, rank_name[185], ply_rank, top_rank
+new setranking, rank_name[33][185], ply_rank[33], top_rank
 
 //------------------
 //	plugin_init()
@@ -100,6 +100,7 @@ public EVENT_PlayerDeath()
 		get_user_authid( victim, auth, 32);
 		SaveLevel(victim, auth);
 	}
+	return PLUGIN_CONTINUE
 }
 
 //------------------
@@ -114,6 +115,7 @@ public EVENT_ItemPickup(id)
 	// If the player has picked up the backpack
 	if (equali(classname, "item_backpack") && !HasBackpack[id])
 		HasBackpack[id] = true
+	return PLUGIN_CONTINUE
 }
 
 //------------------
@@ -208,7 +210,7 @@ GetCurrentRankTitle(id)
 			
 			top_rank = rank_max
 			
-			rank_name = ranktitle
+			rank_name[id] = ranktitle;
 			SQL_NextRow(query);
 		}
 	}
@@ -225,14 +227,14 @@ GetCurrentRankTitle(id)
 public ShowMyRank(id)
 {
 	new Position = GetPosition(id);
-	ply_rank = Position;
+	ply_rank[id] = Position;
 	// Lets call the GetCurrentRankTitle(id) to make sure we get the title for the player
 	GetCurrentRankTitle(id);
 	new auth[33], formated_text[501];
 	get_user_authid( id, auth, 32);
 	LoadLevel(id, auth, false);
 	
-	format(formated_text, 500, "{DEFAULT}you are on rank {GREEN}%d{DEFAULT} of {GREEN}%d{DEFAULT} with the title: ^"{LIGHTBLUE}%s{DEFAULT}^"", ply_rank, top_rank, rank_name) 
+	format(formated_text, 500, "{DEFAULT}you are on rank {GREEN}%d{DEFAULT} of {GREEN}%d{DEFAULT} with the title: ^"{LIGHTBLUE}%s{DEFAULT}^"", ply_rank[id], top_rank, rank_name[id]) 
 	PrintToChat(id, formated_text)
 	return PLUGIN_HANDLED
 }
@@ -566,6 +568,9 @@ public OnPlayerSpawn(id) {
 		CreateStats(id, auth)
 	if ( !HasSpawned[id] )
 		HasSpawned[id] = true;
+	// If the player doesn't have his backpack.
+	if (!HasBackpack[id])
+		PrintToChat(id, "{DEFAULT}You need to regain your {GREEN}backpack{DEFAULT}, else it won't save your current stats." )
 } 
 
 //------------------
@@ -581,14 +586,14 @@ public HelpOnConnect(id)
 	if ( enable_ranking )
 	{
 		new Position = GetPosition(id);
-		ply_rank = Position;
-		format(formated_text, 500, "{DEFAULT}Welcome {RED}%s{DEFAULT} to {ORANGE}%s{DEFAULT}! You are on rank {LIGHTBLUE}%d{DEFAULT}.", plyname, hostname, ply_rank) 
-		PrintToChat( id, formated_text)
+		ply_rank[id] = Position;
+		format(formated_text, 500, "{DEFAULT}Welcome {RED}%s{DEFAULT} to {ORANGE}%s{DEFAULT}! You are on rank {LIGHTBLUE}%d{DEFAULT}.", plyname, hostname, ply_rank[id]) 
+		PrintToChat(id, formated_text)
 	}
 	else
 	{
 		format(formated_text, 500, "{DEFAULT}Welcome {RED}%s{DEFAULT} to {ORANGE}%s{DEFAULT}!", plyname, hostname) 
-		PrintToChat( id, formated_text)
+		PrintToChat(id, formated_text)
 	}
 
 	BBHelp(id,false)
@@ -613,7 +618,7 @@ public ShowStatsOnSpawn(id)
 			}
 			new plyname[32], formated_text[501]
 			get_user_name(id, plyname, 31)
-			format(formated_text, 500, "{RED}%s{DEFAULT} is {LIGHTBLUE}%s{DEFAULT}. Ranked {GREEN}%d{DEFAULT} of {GREEN}%d{DEFAULT}.", plyname, rank_name, ply_rank, top_rank) 
+			format(formated_text, 500, "{RED}%s{DEFAULT} is {LIGHTBLUE}%s{DEFAULT}. Ranked {GREEN}%d{DEFAULT} of {GREEN}%d{DEFAULT}.", plyname, rank_name[id], ply_rank[id], top_rank) 
 			PrintToChat( players[i], formated_text)
 		}
 	}
@@ -987,9 +992,9 @@ LoadLevel(id, auth[], LoadMyStats = true)
 			top_rank = rank_max
 			// This reads the players EXP, and then checks with other players EXP to get the players rank
 			new Position = GetPosition(id);
-			ply_rank = Position
+			ply_rank[id] = Position;
 			// Sets the title
-			rank_name = ranktitle;
+			rank_name[id] = ranktitle;
 			SQL_NextRow(query2);
 		}
 	}
