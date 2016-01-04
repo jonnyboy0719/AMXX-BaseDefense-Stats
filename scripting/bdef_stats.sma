@@ -25,7 +25,7 @@
 // Plugin
 #define PLUGIN	"Base Defense STATS"
 #define AUTHOR	"JonnyBoy0719"
-#define VERSION	"1.1"
+#define VERSION	"1.2"
 
 //------------------
 //	Handles & more
@@ -277,6 +277,10 @@ public ResetStats(id, FullReset)
 		bdef_set_user_skill_precision(id, 0);
 		bdef_set_user_skill_toughness(id, 0);
 		bdef_set_user_skill_sorcery(id, 0);
+
+		// Lets update the UI
+		bdef_update_user_skills(id);
+		bdef_update_user_belt(id);
 	}
 	else
 	{
@@ -301,6 +305,10 @@ public ResetStats(id, FullReset)
 		bdef_set_user_skill_precision(id, 0);
 		bdef_set_user_skill_toughness(id, 0);
 		bdef_set_user_skill_sorcery(id, 0);
+
+		// Lets update the UI
+		bdef_update_user_skills(id);
+		bdef_update_user_belt(id);
 	}
 	return PLUGIN_HANDLED
 }
@@ -966,6 +974,10 @@ LoadLevel(id, auth[], LoadMyStats = true)
 				bdef_set_user_skill_toughness(id, sql_toughness);
 				bdef_set_user_skill_sorcery(id, sql_sorcery);
 				bdef_set_user_points(id, sql_points);
+
+				// Lets update the UI
+				bdef_update_user_skills(id);
+				bdef_update_user_belt(id);
 			}
 
 			SQL_NextRow(query);

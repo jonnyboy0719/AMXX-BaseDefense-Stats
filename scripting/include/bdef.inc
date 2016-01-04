@@ -85,6 +85,29 @@ stock bdef_get_user_skill_sorcery(id) {
 	return get_pdata_int(id, 32);
 }
 
+stock bdef_update_user_skills(id) {
+	static gmsgPlrStats;
+	if (!gmsgPlrStats)
+		gmsgPlrStats = get_user_msgid("PlrStats");
+	message_begin( MSG_ONE, gmsgPlrStats, {0,0,0}, id );
+	write_byte( bdef_get_user_skill_legerity(id) );
+	write_byte( bdef_get_user_skill_precision(id) );
+	write_byte( bdef_get_user_skill_toughness(id) );
+	write_byte( bdef_get_user_skill_sorcery(id) );
+	write_byte( bdef_get_user_points(id) );
+	message_end();
+}
+
+stock bdef_update_user_belt(id) {
+	static gmsgBelt;
+	if (!gmsgBelt)
+		gmsgBelt = get_user_msgid("Belt");
+	message_begin( MSG_ONE, gmsgBelt, {0,0,0}, id );
+	write_byte( bdef_get_user_item_health(id) );
+	write_byte( bdef_get_user_item_mana(id) );
+	message_end();
+}
+
 stock bdef_get_user_exp_min(id) {
 	return get_pdata_int(id, 404);
 }
