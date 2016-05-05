@@ -187,9 +187,7 @@ GetCurrentRankTitle(id)
 	new Handle:sql = SQL_Connect(info, errno, error, 127)
 
 	if (sql == Empty_Handle)
-	{
 		server_print("[AMXX] %L", LANG_SERVER, "SQL_CANT_CON", error)
-	}
 
 	new table[32]
 
@@ -400,9 +398,7 @@ public ShowTop10(id)
 	new Handle:sql = SQL_Connect(info, errno, error, 127)
 
 	if (sql == Empty_Handle)
-	{
 		server_print("[AMXX] %L", LANG_SERVER, "SQL_CANT_CON", error)
-	}
 
 	new table[32], name[33]
 
@@ -466,13 +462,9 @@ public PluginThinkLoop()
 	}
 
 	if ( setranking >= 1 )
-	{
 		enable_ranking = true;
-	}
 	else
-	{
 		enable_ranking = false;
-	}
 }
 
 //------------------
@@ -489,29 +481,22 @@ public PluginAdverts()
 		if(is_user_connected(id))
 		{
 			new GetRandom = random_num(0, 8)
-
+			
 			switch (GetRandom)
 			{
 				case 0:
-				{
 					format(formated_text, 500, "{ADDITIVE}{DEFAULT}[{RED}STATS{DEFAULT}] Want to see what commands you can write? write {GREEN}/help") 
-					PrintToChat(id, formated_text)
-				}
 				case 5:
-				{
 					format(formated_text, 500, "{ADDITIVE}{DEFAULT}[{RED}STATS{DEFAULT}] Want to reset your stats? write {GREEN}/reset") 
-					PrintToChat(id, formated_text)
-				}
 				case 8:
-				{
 					format(formated_text, 500, "{ADDITIVE}{DEFAULT}This server is using Base Defense Stats Version {GREEN}%s{DEFAULT} by {RED}JonnyBoy0719", VERSION) 
-					PrintToChat(id, formated_text)
-				}
 				
 				default:
 				{
 				}
 			}
+			
+			PrintToChat(id, formated_text)
 		}
 	}
 }
@@ -539,15 +524,11 @@ public client_connect(id)
 			get_user_name(id, plyname, 31)
 
 			if (is_user_admin(players[i]))
-			{
-				format(formated_text, 500, "{DEFAULT}Player {RED}%s{DEFAULT} <^"{GREEN}%s{DEFAULT}^"> is now connecting...", plyname, auth) 
-				PrintToChat(players[i], formated_text)
-			}
+				format(formated_text, 500, "{DEFAULT}Player {RED}%s{DEFAULT} <^"{GREEN}%s{DEFAULT}^"> is now connecting...", plyname, auth)
 			else
-			{
-				format(formated_text, 500, "{DEFAULT}Player {RED}%s{DEFAULT} is now connecting...", plyname) 
-				PrintToChat(players[i], formated_text)
-			}
+				format(formated_text, 500, "{DEFAULT}Player {RED}%s{DEFAULT} is now connecting...", plyname)
+			
+			PrintToChat(players[i], formated_text)
 		}
 	}
 }
@@ -597,13 +578,11 @@ public HelpOnConnect(id)
 		new Position = GetPosition(id);
 		ply_rank[id] = Position;
 		format(formated_text, 500, "{DEFAULT}Welcome {RED}%s{DEFAULT} to {ORANGE}%s{DEFAULT}! You are on rank {LIGHTBLUE}%d{DEFAULT}.", plyname, hostname, ply_rank[id]) 
-		PrintToChat(id, formated_text)
 	}
 	else
-	{
 		format(formated_text, 500, "{DEFAULT}Welcome {RED}%s{DEFAULT} to {ORANGE}%s{DEFAULT}!", plyname, hostname) 
-		PrintToChat(id, formated_text)
-	}
+	
+	PrintToChat(id, formated_text)
 
 	BBHelp(id,false)
 }
@@ -731,9 +710,7 @@ SaveLevel(id, auth[], fragkill=false)
 	new Handle:sql = SQL_Connect(info, errno, error, 127)
 
 	if (sql == Empty_Handle)
-	{
 		server_print("[AMXX] %L", LANG_SERVER, "SQL_CANT_CON", error)
-	}
 
 	new table[32]
 
@@ -789,9 +766,7 @@ UpdateConnection(client, auth[],IsOnline=true)
 	new Handle:sql = SQL_Connect(info, errno, error, 127)
 
 	if (sql == Empty_Handle)
-	{
 		server_print("[AMXX] %L", LANG_SERVER, "SQL_CANT_CON", error)
-	}
 
 	if(IsOnline)
 	{
@@ -834,9 +809,7 @@ SaveDate(auth[])
 	new Handle:sql = SQL_Connect(info, errno, error, 127)
 
 	if (sql == Empty_Handle)
-	{
 		server_print("[AMXX] %L", LANG_SERVER, "SQL_CANT_CON", error)
-	}
 
 	new table[32]
 
@@ -1034,9 +1007,7 @@ GetPosition(id)
 	new Handle:sql = SQL_Connect(info, errno, error, 127)
 
 	if (sql == Empty_Handle)
-	{
 		server_print("[AMXX] %L", LANG_SERVER, "SQL_CANT_CON", error)
-	}
 
 	new table[32]
 
@@ -1081,9 +1052,7 @@ CreateStats(id, auth[])
 	new Handle:sql = SQL_Connect(info, errno, error, 127)
 
 	if (sql == Empty_Handle)
-	{
 		server_print("[AMXX] %L", LANG_SERVER, "SQL_CANT_CON", error)
-	}
 
 	new table[32]
 

@@ -103,7 +103,6 @@ stock bdef_get_user_skill_sorcery(id) {
 	return get_pdata_int(id, get_sorcery);
 }
 
-// Broken? Should be looked into
 stock bdef_get_user_exp_min(id) {
 	return get_pdata_int(id, get_exp_min);
 }
@@ -111,7 +110,6 @@ stock bdef_get_user_exp_max(id) {
 	return get_pdata_int(id, get_exp_max);
 }
 
-// Broken on the new update
 stock bdef_get_user_points(id) {
 	return get_pdata_int(id, get_points);
 }
@@ -120,7 +118,6 @@ stock bdef_get_user_task(id) {
 	return get_pdata_int(id, get_task);
 }
 
-// Broken? Should be looked into
 stock bdef_get_user_item_health(id) {
 	return get_pdata_int(id, get_item_hp);
 }
