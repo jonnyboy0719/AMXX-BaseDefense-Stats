@@ -8,7 +8,7 @@
 //	Include Files
 //------------------
 
-#define OLDVALUE	// Comment this out to use the new color features that is made for AMX
+//#define OLDVALUE	// Comment this out to use the new color features that is made for AMX
 
 #include <amxmodx>
 #include <amxmisc>
@@ -25,7 +25,7 @@
 // Plugin
 #define PLUGIN	"Base Defense STATS"
 #define AUTHOR	"JonnyBoy0719"
-#define VERSION	"1.2"
+#define VERSION	"1.3"
 
 //------------------
 //	Handles & more
@@ -256,7 +256,7 @@ public ResetStats(id, FullReset)
 		{
 			format(formated_text, 500, "{DEFAULT}[{RED}STATS{DEFAULT}] To make a full reset of your stats, write {GREEN}/fullreset{DEFAULT} again.")
 			PrintToChat(id, formated_text)
-			format(formated_text, 500, "{DEFAULT}You have 5 seconds to confirm your reset, type {GREEN}/fullreset{DEFAULT} if your absolutely sure.")
+			format(formated_text, 500, "{DEFAULT}You have {RED}5{DEFAULT} seconds to confirm your reset, type {GREEN}/fullreset{DEFAULT} if your absolutely sure.")
 			PrintToChat(id, formated_text)
 			ShouldFullReset[id] = true;
 			set_task(5.0, "ResetConvarStatus", id)
@@ -574,6 +574,7 @@ public OnPlayerSpawn(id) {
 	// Creates the stats, if it already exists, it will skip it.
 	if ( !HasLoadedStats[id] )
 		CreateStats(id, auth)
+	// Checks if the player has spawned (so we don't save the player stats when they join and then just leaves directly after)
 	if ( !HasSpawned[id] )
 		HasSpawned[id] = true;
 	// If the player doesn't have his backpack.
