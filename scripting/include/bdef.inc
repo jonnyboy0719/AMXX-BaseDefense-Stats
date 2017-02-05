@@ -21,8 +21,7 @@
 /********************************************************************/
 
 // Chat Colors
-#if defined OLDVALUE
-#define COLOR_ADDITIVE		"^^0"
+//#define COLOR_ADDITIVE		"^^0"	// No longer exists!
 #define COLOR_DEFAULT		"^^1"
 #define COLOR_RED			"^^2"
 #define COLOR_GREEN			"^^3"
@@ -32,36 +31,23 @@
 #define COLOR_LIGHTBLUE		"^^7"
 #define COLOR_GRAY			"^^8"
 #define COLOR_NORMAL		"^^9"
-#else
-#define COLOR_ADDITIVE		"~0"
-#define COLOR_DEFAULT		"~1"
-#define COLOR_RED			"~2"
-#define COLOR_GREEN			"~3"
-#define COLOR_BLUE			"~4"
-#define COLOR_ORANGE		"~5"
-#define COLOR_BROWN			"~6"
-#define COLOR_LIGHTBLUE		"~7"
-#define COLOR_GRAY			"~8"
-#define COLOR_NORMAL		"~9"
-#endif
 
 // IDS
-#define get_level			28
-#define get_money			27
-#define get_mana			408
-#define get_mana_max		409
-#define get_hps				437
-#define get_hps_max			435
-#define get_legerity		29
-#define get_precision		30
-#define get_toughness		31
-#define get_sorcery			32
-#define get_exp_min			405
-#define get_exp_max			406
-#define get_points			407
-#define get_task			33
-#define get_item_hp			401
-#define get_item_mana		402
+#define get_level			26
+#define get_money			25
+#define get_mana			1101
+#define get_mana_max		1102
+#define get_hps				1132
+#define get_hps_max			1130
+#define get_legerity		27
+#define get_precision		28
+#define get_toughness		29
+#define get_sorcery			30
+#define get_exp_min			1098
+#define get_exp_max			1099
+#define get_points			1100
+#define get_item_hp			1087
+#define get_item_mana		1088
 
 stock bdef_get_user_level(id) {
 	return get_pdata_int(id, get_level);
@@ -112,10 +98,6 @@ stock bdef_get_user_exp_max(id) {
 
 stock bdef_get_user_points(id) {
 	return get_pdata_int(id, get_points);
-}
-
-stock bdef_get_user_task(id) {
-	return get_pdata_int(id, get_task);
 }
 
 stock bdef_get_user_item_health(id) {
@@ -181,19 +163,19 @@ stock bdef_set_user_money(id, value) {
 }
 
 stock bdef_set_user_mana(id, value) {
-	return set_pdata_int(id, get_mana, value, -1);
+	return set_pdata_int(id, get_mana, value);
 }
 
 stock bdef_set_user_mana_max(id, value) {
-	return set_pdata_int(id, get_mana_max, value, -1);
+	return set_pdata_int(id, get_mana_max, value);
 }
 
 stock bdef_set_user_hps(id, value) {
-	return set_pdata_int(id, get_hps, value, -1);
+	return set_pdata_int(id, get_hps, value);
 }
 
 stock bdef_set_user_hps_max(id, value) {
-	return set_pdata_int(id, get_hps_max, value, -1);
+	return set_pdata_int(id, get_hps_max, value);
 }
 
 stock bdef_set_user_skill_legerity(id, value) {
@@ -221,10 +203,6 @@ stock bdef_set_user_exp_max(id, value) {
 
 stock bdef_set_user_points(id, value) {
 	return set_pdata_int(id, get_points, value);
-}
-
-stock bdef_set_user_task(id, value) {
-	return set_pdata_int(id, get_task, value);
 }
 
 stock bdef_set_user_item_health(id, value) {
