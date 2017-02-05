@@ -44,9 +44,3 @@ Web GUI
 
 Make sure you install the web gui on your apache folder (you can find all files under `web/` folder) and not copying it to your actual base defense server!  
 You also need to make sure to setup the configurations on the config.php.
-
-Web GUI Demo
------------
-
-If you want to see how the Web GUI looks like, you can do so by going to our official Base Defense Stats page for our server!  
-Demo: [Click here!](http://stats.jonnyboy0719.co.uk/bdef/)
